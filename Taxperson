@@ -1,0 +1,66 @@
+/* Unit testing Steps
+
+Verifying 
+
+    Enter values for Item Name, price and tax Rate for the item
+    Check the functionality of tax calculation for the entered item
+    Check the functionality of total amount
+    Based on the item price verify the condition that the item is necessity or luxury.
+
+*/
+
+
+//This program calculates the total price which includes sales tax
+package practice;
+import java.util.Scanner;
+
+public class SalesTax
+{
+	public static void main(String[] args)
+	{
+		//identifier declarations
+		final double TAX_RATE ;
+		double price;
+		double tax;
+		double total;
+		String item;
+
+		//create a Scanner object to read from the keyboard
+		Scanner keyboard = new Scanner(System.in);
+
+		Scanner t = new Scanner(System.in);
+
+
+		//display prompts and get input
+		System.out.print("Item description:  ");
+		item = keyboard.nextLine();
+		System.out.print("Item price:  $");
+		price = keyboard.nextDouble();
+		int price_cents=(int) (price*100);
+		System.out.println("Item price in cents " +price_cents);
+		System.out.println("Enter Tax rate");
+		TAX_RATE=t.nextDouble();
+
+		//calculations
+		tax = price_cents *  TAX_RATE;
+		total = price_cents + tax;
+
+		//display results
+		System.out.print(item + "        ¢");
+
+		System.out.println(price_cents);
+		System.out.print("Tax          ¢");
+		System.out.println(tax);
+		System.out.print("Total        ¢");
+		System.out.println(total);
+		//Determinig the type of item
+		if(TAX_RATE<=0.01||TAX_RATE<0.09){
+			System.out.println("The item is a necessity item");
+		}
+
+		if(TAX_RATE>=0.09){
+			System.out.println("The item is a luxury item");
+		}
+
+	}
+}
